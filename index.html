@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/navbar.css"/>
+    <link rel="stylesheet" href="./style/common.css"/>
+</head>
+<body>
+
+    <div id="navbar"></div>
+
+    <div id="input">
+       <input type="text" id="query" placeholder="Search your meal here"/>
+       <button onclick="searchreceipe()">Search</button>
+    </div>
+    
+    <!-- <h1>search receipe</h1> -->
+
+    <div id="container"></div>
+</body>
+</html>
+
+<script type="module">
+    import navbar from "./components/navbar.js"
+
+    // console.log(navbar())
+
+    document.getElementById("navbar").innerHTML=navbar() 
+
+    import {getData,append} from "./scripts/appendFetch.js"
+
+    // console.log(getData)
+
+    let url="https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata"
+
+    let data= await getData(url)
+
+    let cont=document.getElementById("container")
+
+    append(data,cont)
+
+   
+
+</script>
